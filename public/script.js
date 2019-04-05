@@ -19,12 +19,17 @@ var randomDog = () =>{
     });
 }
 
-randomDog();
+var randomMovie = () =>{
+    fetch('/favorite-movies')
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(movie) {
+        console.log(movie)
+        var html = `<h3>"${movie.title} (${movie.year})"</h3><p>Amy's Rating: ${movie.rating}/5</p>`;
+        document.getElementById("randommovie").innerHTML = html;
+    });
+}
 
-/*
-<video width="400" controls>
-  <source src="mov_bbb.mp4" type="video/mp4">
-  <source src="mov_bbb.ogg" type="video/ogg">
-  Your browser does not support HTML5 video.
-</video>
-*/
+randomDog();
+randomMovie();

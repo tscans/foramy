@@ -1,0 +1,27 @@
+[
+    {
+        "title":"Cinderella Man",
+        "year":2005,
+        "rating":5
+    },
+    {
+        "title":"Gladiator",
+        "year":2000,
+        "rating":5
+    },
+    {
+        "title":"Iron Man",
+        "year":2008,
+        "rating":5
+    },
+    {
+        "title":"Toy Story",
+        "year":1995,
+        "rating":5
+    },
+    {
+        "title":"Frozen",
+        "year":2013,
+        "rating":5
+    }
+]
