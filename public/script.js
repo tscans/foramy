@@ -1,5 +1,23 @@
 console.log('script');
 
+var outfits = [
+    {
+        minTemp:-150,
+        maxTemp:40,
+        outfit:"Winter coat, long pants, sweater, boots"
+    },
+    {
+        minTemp:40,
+        maxTemp:65,
+        outfit: "long pants, short sleeve, cardigan"
+    },
+    {
+        minTemp:65,
+        maxTemp:200,
+        outfit: "Nothing at all!"
+    }
+]
+
 var randomDog = () =>{
     fetch('https://random.dog/woof.json')
     .then(function(response) {
@@ -31,5 +49,28 @@ var randomMovie = () =>{
     });
 }
 
+var weatherData = () =>{
+    fetch('/weather').then((response)=>{
+          return response.json();
+    })
+    .then((weather)=>{
+        console.log(weather);
+        var temp = weather.consolidated_weather[0].the_temp;
+        console.log(temp)
+        var fare = (temp*9/5)+32;
+        var outfit = null;
+        for(var i = 0; i < outfits.length;i++){
+            if(fare <= outfits[i].maxTemp && fare >= outfits[i].minTemp){
+                outfit = outfits[i];
+            }
+        }
+        var html = `<h3>Current Temp: ${fare} degrees</h3><p>Today's recommended outfit is: ${outfit.outfit}</p>`;
+        document.getElementById("temp-outfit").innerHTML = html;
+    })
+}
+
+
+
 randomDog();
 randomMovie();
+weatherData();
